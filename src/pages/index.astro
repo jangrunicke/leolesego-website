@@ -1,20 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 ---
 
 <Layout title="leolesego">
   <main>
     <script
       type="module"
-      src="https://unpkg.com/@splinetool/viewer@0.9.411/build/spline-viewer.js"
+      src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"
     ></script>
+
     <div class="spline-viewer">
       <spline-viewer
         url="https://prod.spline.design/wqsnyCIjuNRg-bMU/scene.splinecode"
       ></spline-viewer>
     </div>
-    <h1>leolesego.</h1>
+    <h1>leolesego</h1>
   </main>
 </Layout>
 
@@ -46,12 +46,14 @@ import Card from "../components/Card.astro";
     height: 100%;
   }
   h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 700;
     line-height: 1;
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
     z-index: 1;
+    text-transform: uppercase;
+    font-weight: 900;
   }
 </style>

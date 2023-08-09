@@ -3,6 +3,9 @@ interface Props {
   title: string;
 }
 
+import "@fontsource/lato/700-italic.css";
+import "@fontsource/lato/900-italic.css";
+
 const { title } = Astro.props;
 ---
 
@@ -19,6 +22,25 @@ const { title } = Astro.props;
   <body>
     <slot />
   </body>
+  <script>
+    window.onload = function () {
+      const canvas = document.createElement("canvas");
+      const scale = 2; // 2x scale for smoothwer edges
+      const dotSize = 20; // Desired size of the dot
+      canvas.width = dotSize * scale;
+      canvas.height = dotSize * scale;
+
+      const ctx = canvas.getContext("2d");
+      ctx.imageSmoothingEnabled = true;
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(dotSize, dotSize, dotSize, 0, 2 * Math.PI);
+      ctx.fill();
+
+      const dotDataURL = canvas.toDataURL();
+      document.body.style.cursor = `url(${dotDataURL} ${dotSize} ${dotSize}), auto`;
+    };
+  </script>
 </html>
 <style is:global>
   :root {
@@ -33,12 +55,17 @@ const { title } = Astro.props;
     );
   }
   html {
-    font-family: system-ui, sans-serif;
+    font-family: "Lato", system-ui, sans-serif;
     background: #13151a;
     background-size: 224px;
   }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  body {
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKklEQVQYlWN8//8/AwYgDlYwKuZgVKZBSMxgFkNYDmUxFTMwA61EClYAAJOQjWRK5K6WAAAAAElFTkSuQmCC),
+      auto;
   }
 </style>
