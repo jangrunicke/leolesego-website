@@ -3,8 +3,8 @@ interface Props {
   title: string;
 }
 
-import "@fontsource/lato/700-italic.css";
-import "@fontsource/lato/900-italic.css";
+// Supports weights 400-700
+import "@fontsource-variable/lora";
 
 const { title } = Astro.props;
 ---
@@ -36,7 +36,7 @@ const { title } = Astro.props;
     );
   }
   html {
-    font-family: "Lato", system-ui, sans-serif;
+    font-family: "Lora Variable", system-ui, sans-serif;
     background: #13151a;
     background-size: 224px;
   }
