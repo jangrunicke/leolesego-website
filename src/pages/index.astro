@@ -4,6 +4,8 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="leolesego">
   <main>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
     <script
       type="module"
       src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"
@@ -15,10 +17,58 @@ import Layout from "../layouts/Layout.astro";
       ></spline-viewer>
     </div>
     <h1>leolesego</h1>
+    <script>
+      let mouseX = 0,
+        mouseY = 0;
+      let xp = 0,
+        yp = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      const cursorFollower = document.getElementById("cursor-follower");
+
+      function animate() {
+        xp += (mouseX - xp) * 0.1;
+        yp += (mouseY - yp) * 0.1;
+
+        cursorFollower.style.left = `${xp}px`;
+        cursorFollower.style.top = `${yp}px`;
+
+        requestAnimationFrame(animate);
+      }
+
+      // When mouse moves, show the circle.
+      document.addEventListener("mousemove", () => {
+        cursorFollower.style.opacity = 1;
+      });
+
+      // When mouse leaves the window, hide the circle.
+      document.addEventListener("mouseleave", () => {
+        cursorFollower.style.opacity = 0;
+      });
+
+      animate();
+    </script>
   </main>
 </Layout>
 
 <style>
+  .cursor-follower {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
   main {
     display: flex;
     align-items: center; /* This centers children vertically */
