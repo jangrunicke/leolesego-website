@@ -4,15 +4,14 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="leolesego">
   <main>
-    <div id="cursor-follower" class="cursor-follower"></div>
-
     <script
       type="module"
       src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"
     ></script>
-
+    <div id="cursor-follower" class="cursor-follower"></div>
     <div class="spline-viewer">
       <spline-viewer
+        loading-anim
         url="https://prod.spline.design/wqsnyCIjuNRg-bMU/scene.splinecode"
       ></spline-viewer>
     </div>
@@ -72,7 +71,7 @@ import Layout from "../layouts/Layout.astro";
   main {
     display: flex;
     align-items: center; /* This centers children vertically */
-    justify-content: end; /* This centers children horizontally */
+    justify-content: start; /* This centers children horizontally */
     height: 100dvh;
     background: black;
     width: 100%;
@@ -88,7 +87,6 @@ import Layout from "../layouts/Layout.astro";
     top: 0;
     left: 0;
     z-index: 0;
-    background: white;
   }
 
   .spline-viewer canvas {
@@ -99,10 +97,10 @@ import Layout from "../layouts/Layout.astro";
     font-size: 2rem;
     font-weight: 700;
     line-height: 1;
-    text-align: end;
+    text-align: start;
     margin-top: auto;
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-left: 20px;
     z-index: 1;
     font-weight: 400;
   }
