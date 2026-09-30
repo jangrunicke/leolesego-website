@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leo Lesego — Kostüm &amp; Mode</title>
+    <meta name="description" content="Leo Lesego. Kostüm, Theater und Mode. Berlin." />
+    <meta property="og:title" content="Leo Lesego" />
+    <meta property="og:description" content="Kostüm und Mode." />
+    <meta property="og:image" content="https://leolesego-website.vercel.app/img/emmett/04-s.jpg" />
+    <meta name="theme-color" content="#efece6" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if (new URLSearchParams(location.search).get("theme") === "dark") {
+        document.documentElement.dataset.theme = "dark";
+        document.querySelector('meta[name="theme-color"]').content = "#000000";
+      }
+    </script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header class="bar">
+      <a href="#top" class="bar__name">Leo Lesego</a>
+      <nav class="bar__nav">
+        <a href="#arbeiten">Arbeiten</a>
+        <a href="mailto:leolesego@web.de">Kontakt</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <figure class="hero__image">
+          <img
+            width="1333"
+            height="2000"
+            src="img/emmett/04.jpg"
+            srcset="img/emmett/04-s.jpg 1000w, img/emmett/04.jpg 1333w"
+            sizes="(min-width: 800px) 44vw, 100vw"
+            alt="Eine Figur in einem ausladenden roten Organza-Kleid auf einer dunklen Bühne"
+          />
+          <figcaption>Dreaming Emmett, 2025</figcaption>
+        </figure>
+        <div class="hero__text">
+          <h1>Leo<br />Lesego</h1>
+          <p class="hero__sub">Kostüm &amp; Mode</p>
+        </div>
+      </section>
+
+      <section class="index" id="arbeiten" aria-label="Arbeiten">
+        <p class="index__label">Bühne</p>
+        <ol class="index__list">
+          <li>
+            <a href="#viel-laerm-um-nichts">
+              <span class="c-year">2026</span>
+              <span class="c-title">Viel Lärm um Nichts</span>
+              <span class="c-who">Leander Haußmann</span>
+              <span class="c-where">Staatstheater Darmstadt</span>
+              <span class="c-role">Kostüm</span>
+            </a>
+          </li>
+          <li>
+            <a href="#dreaming-emmett" data-preview="img/emmett/02-s.jpg">
+              <span class="c-year">2025</span>
+              <span class="c-title">Dreaming Emmett</span>
+              <span class="c-who">Sarah Elisabeth Braun</span>
+              <span class="c-where">HfS Ernst Busch, Berlin</span>
+              <span class="c-role">Kostüm &amp; Bühne</span>
+            </a>
+          </li>
+          <li>
+            <a href="#biedermann" data-preview="https://i.ytimg.com/vi/wvWAfOa0lKY/maxresdefault.jpg">
+              <span class="c-year">2025</span>
+              <span class="c-title">Biedermann und die Brandstifter</span>
+              <span class="c-who">Sláva Daubnerová</span>
+              <span class="c-where">Landestheater Niederösterreich</span>
+              <span class="c-role">Kostüm- &amp; Bühnenbildassistenz</span>
+            </a>
+          </li>
+          <li>
+            <a href="#rigoletto" data-preview="img/rigoletto/02-s.jpg">
+              <span class="c-year">2024</span>
+              <span class="c-title">Rigoletto</span>
+              <span class="c-who">Matteo Marziano Graziano</span>
+              <span class="c-where">Teatro Sociale di Como</span>
+              <span class="c-role">Kostümassistenz &amp; Schneiderei</span>
+            </a>
+          </li>
+          <li>
+            <a href="#miss-golden-dreams" data-preview="https://i.ytimg.com/vi/2J6k1iPbMrk/maxresdefault.jpg">
+              <span class="c-year">2023</span>
+              <span class="c-title">Miss Golden Dreams</span>
+              <span class="c-who">Anna Bergmann</span>
+              <span class="c-where">Badisches Staatstheater Karlsruhe</span>
+              <span class="c-role">Kostümassistenz</span>
+            </a>
+          </li>
+          <li>
+            <a href="#mephisto" data-preview="https://i.ytimg.com/vi/-LTsEwIAfH4/maxresdefault.jpg">
+              <span class="c-year">2023</span>
+              <span class="c-title">Mephisto</span>
+              <span class="c-who">Nils Strunk</span>
+              <span class="c-where">Badisches Staatstheater Karlsruhe</span>
+              <span class="c-role">Kostümassistenz</span>
+            </a>
+          </li>
+        </ol>
+        <p class="index__label">Mode</p>
+        <ol class="index__list">
+          <li>
+            <a href="#unvain" data-preview="https://i.ytimg.com/vi/kD_3SGqwljQ/maxresdefault.jpg">
+              <span class="c-year">2026</span>
+              <span class="c-title">UNVAIN — Skins</span>
+              <span class="c-who">Robert Friedrichs</span>
+              <span class="c-where">Berlin Fashion Week</span>
+              <span class="c-role">Design-Praktikum</span>
+            </a>
+          </li>
+        </ol>
+        <img class="index__preview" alt="" aria-hidden="true" />
+      </section>
+
+      <!-- Viel Lärm um Nichts -->
+      <article class="work" id="viel-laerm-um-nichts">
+        <header class="work__head">
+          <span class="work__no">01</span>
+          <h2>Viel Lärm um Nichts</h2>
+          <dl class="work__meta">
+            <div><dt>Von</dt><dd>William Shakespeare</dd></div>
+            <div><dt>Regie</dt><dd>Leander Haußmann</dd></div>
+            <div><dt>Bühne</dt><dd>Max Lindner</dd></div>
+            <div><dt>Kostüm</dt><dd>Leo Lesego</dd></div>
+            <div><dt>Haus</dt><dd>Staatstheater Darmstadt, Kleines Haus</dd></div>
+            <div><dt>Premiere</dt><dd>2. Oktober 2026</dd></div>
+          </dl>
+        </header>
+        <p class="work__note">
+          <a href="https://www.staatstheater-darmstadt.de/veranstaltungen/viel-laerm-um-nichts.2078/" target="_blank" rel="noopener">Staatstheater Darmstadt ↗</a>
+        </p>
+      </article>
+
+      <!-- Dreaming Emmett -->
+      <article class="work work--feature" id="dreaming-emmett">
+        <header class="work__head">
+          <span class="work__no">02</span>
+          <h2>Dreaming Emmett <em>— a retelling</em></h2>
+          <dl class="work__meta">
+            <div><dt>Von</dt><dd>Toni Morrison</dd></div>
+            <div><dt>Regie</dt><dd>Sarah Elisabeth Braun</dd></div>
+            <div><dt>Kostüm &amp; Bühne</dt><dd>Leo Lesego</dd></div>
+            <div><dt>Haus</dt><dd>HfS Ernst Busch, Berlin, 2025</dd></div>
+            <div><dt>Gastspiel</dt><dd>Körber Studio Junge Regie, Hamburg, 2026</dd></div>
+          </dl>
+        </header>
+        <div class="gallery" data-gallery>
+          <figure class="g" style="--col: 1 / 6"><img width="1333" height="2000" src="img/emmett/02.jpg" srcset="img/emmett/02-s.jpg 1000w, img/emmett/02.jpg 1333w" sizes="(min-width: 800px) 42vw, 100vw" alt="Rotes Organza-Kleid mit Schleppe vor einer Betonwand" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 8 / 12"><img width="1333" height="2000" src="img/emmett/03.jpg" srcset="img/emmett/03-s.jpg 1000w, img/emmett/03.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Schwarze wattierte Jacke mit runden Ärmeln" loading="lazy" /></figure>
+          <figure class="g" style="--col: 3 / 13"><img width="2000" height="1332" src="img/emmett/08.jpg" srcset="img/emmett/08-s.jpg 1000w, img/emmett/08.jpg 2000w" sizes="(min-width: 800px) 75vw, 100vw" alt="Szene: die Figur im roten Kleid beugt sich über einen weiß verhüllten Tisch" loading="lazy" /></figure>
+          <figure class="g" style="--col: 2 / 6"><img width="1333" height="2000" src="img/emmett/01.jpg" srcset="img/emmett/01-s.jpg 1000w, img/emmett/01.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Darsteller in dunkelblauer Rüschenjacke und kurzer Hose im Scheinwerferlicht" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 7 / 11"><img width="1333" height="2000" src="img/emmett/06.jpg" srcset="img/emmett/06-s.jpg 1000w, img/emmett/06.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Rückenansicht der blauen Rüschenjacke vor blauem Vorhang" loading="lazy" /></figure>
+          <figure class="g" style="--col: 1 / 13"><img width="2000" height="1332" src="img/emmett/07.jpg" srcset="img/emmett/07-s.jpg 1000w, img/emmett/07.jpg 2000w" sizes="100vw" alt="Bühne in blauem Licht, Ensemble hinter einer beleuchteten Treppe" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 2 / 6"><img width="1333" height="2000" src="img/emmett/09.jpg" srcset="img/emmett/09-s.jpg 1000w, img/emmett/09.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Die Figur im roten Kleid zwischen Vorhängen" loading="lazy" /></figure>
+          <figure class="g" style="--col: 7 / 12"><img width="1333" height="2000" src="img/emmett/05.jpg" srcset="img/emmett/05-s.jpg 1000w, img/emmett/05.jpg 1333w" sizes="(min-width: 800px) 36vw, 100vw" alt="Figur in hellem Mantel mit roten Details vor blauem Vorhang" loading="lazy" /></figure>
+          <figure class="g" style="--col: 1 / 11"><img width="2000" height="1332" src="img/emmett/11.jpg" srcset="img/emmett/11-s.jpg 1000w, img/emmett/11.jpg 2000w" sizes="(min-width: 800px) 75vw, 100vw" alt="Szene: Figur in Weiß und Rot auf einem Stuhl, mit großer Schleife im Haar" loading="lazy" /></figure>
+          <figure class="g" style="--col: 3 / 7"><img width="1333" height="2000" src="img/emmett/10.jpg" srcset="img/emmett/10-s.jpg 1000w, img/emmett/10.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Schwarze wattierte Jacke, frontal" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 8 / 12"><img width="1333" height="2000" src="img/emmett/14.jpg" srcset="img/emmett/14-s.jpg 1000w, img/emmett/14.jpg 1333w" sizes="(min-width: 800px) 33vw, 100vw" alt="Bühnenraum mit Vorhängen und Treppe, Ensemble" loading="lazy" /></figure>
+          <figure class="g" style="--col: 1 / 13"><img width="2000" height="1283" src="img/emmett/12.jpg" srcset="img/emmett/12-s.jpg 1000w, img/emmett/12.jpg 2000w" sizes="100vw" alt="Szene vor rotem Vorhang, zwei Figuren in Schwarz" loading="lazy" /></figure>
+        </div>
+        <div class="work__media">
+          <button class="video" data-yt="BXV6wbkEx2I" aria-label="Video abspielen: Dreaming Emmett, Körber Studio Junge Regie 2026">
+            <img width="1280" height="720" src="https://i.ytimg.com/vi/BXV6wbkEx2I/maxresdefault.jpg" alt="" loading="lazy" />
+            <span class="video__play">Film</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Biedermann und die Brandstifter -->
+      <article class="work" id="biedermann">
+        <header class="work__head">
+          <span class="work__no">03</span>
+          <h2>Biedermann und die Brandstifter</h2>
+          <dl class="work__meta">
+            <div><dt>Von</dt><dd>Max Frisch</dd></div>
+            <div><dt>Regie</dt><dd>Sláva Daubnerová</dd></div>
+            <div><dt>Kostüm</dt><dd>Cedric Mpaka</dd></div>
+            <div><dt>Haus</dt><dd>Landestheater Niederösterreich, St. Pölten</dd></div>
+            <div><dt>Jahr</dt><dd>2025</dd></div>
+            <div><dt>Mitarbeit</dt><dd>Kostüm- und Bühnenbildassistenz</dd></div>
+          </dl>
+        </header>
+        <div class="work__media">
+          <button class="video" data-yt="wvWAfOa0lKY" aria-label="Video abspielen: Trailer Biedermann und die Brandstifter">
+            <img width="1280" height="720" src="https://i.ytimg.com/vi/wvWAfOa0lKY/maxresdefault.jpg" alt="" loading="lazy" />
+            <span class="video__play">Trailer</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Rigoletto -->
+      <article class="work" id="rigoletto">
+        <header class="work__head">
+          <span class="work__no">04</span>
+          <h2>Rigoletto</h2>
+          <dl class="work__meta">
+            <div><dt>Von</dt><dd>Giuseppe Verdi</dd></div>
+            <div><dt>Regie</dt><dd>Matteo Marziano Graziano</dd></div>
+            <div><dt>Kostüm</dt><dd>Laurent Pellissier</dd></div>
+            <div><dt>Haus</dt><dd>OperaLombardia, Teatro Sociale di Como</dd></div>
+            <div><dt>Jahr</dt><dd>2024</dd></div>
+            <div><dt>Mitarbeit</dt><dd>Kostümassistenz und Schneiderei</dd></div>
+          </dl>
+        </header>
+        <div class="gallery" data-gallery>
+          <figure class="g" style="--col: 1 / 10"><img width="2000" height="1333" src="img/rigoletto/04.jpg" srcset="img/rigoletto/04-s.jpg 1000w, img/rigoletto/04.jpg 2000w" sizes="(min-width: 800px) 75vw, 100vw" alt="Chor in dunklen Kostümen mit Masken, in der Mitte eine Figur in hellem Mantel" loading="lazy" /></figure>
+          <figure class="g" style="--col: 1 / 7"><img width="2000" height="1333" src="img/rigoletto/02.jpg" srcset="img/rigoletto/02-s.jpg 1000w, img/rigoletto/02.jpg 2000w" sizes="(min-width: 800px) 50vw, 100vw" alt="Figur in weißem Fellmantel und Hut vor dunklem Grund" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 8 / 13"><img width="2000" height="1333" src="img/rigoletto/03.jpg" srcset="img/rigoletto/03-s.jpg 1000w, img/rigoletto/03.jpg 2000w" sizes="(min-width: 800px) 50vw, 100vw" alt="Rigoletto im karierten Anzug neben einer Frau in türkisem Kleid" loading="lazy" /></figure>
+          <figure class="g" style="--col: 4 / 13"><img width="2000" height="1333" src="img/rigoletto/05.jpg" srcset="img/rigoletto/05-s.jpg 1000w, img/rigoletto/05.jpg 2000w" sizes="(min-width: 800px) 75vw, 100vw" alt="Szene mit mehreren Figuren in bunten, gemusterten Kostümen" loading="lazy" /></figure>
+          <figure class="g" style="--col: 1 / 7"><img width="2000" height="1333" src="img/rigoletto/07.jpg" srcset="img/rigoletto/07-s.jpg 1000w, img/rigoletto/07.jpg 2000w" sizes="(min-width: 800px) 50vw, 100vw" alt="Figur in weißem Mantel mit blauem Licht" loading="lazy" /></figure>
+          <figure class="g g--low" style="--col: 8 / 13"><img width="2000" height="1333" src="img/rigoletto/06.jpg" srcset="img/rigoletto/06-s.jpg 1000w, img/rigoletto/06.jpg 2000w" sizes="(min-width: 800px) 50vw, 100vw" alt="Schlussszene: Rigoletto über einer liegenden Figur" loading="lazy" /></figure>
+        </div>
+        <p class="work__credit">Fotos: Masiar Pasquali</p>
+      </article>
+
+      <!-- Miss Golden Dreams -->
+      <article class="work" id="miss-golden-dreams">
+        <header class="work__head">
+          <span class="work__no">05</span>
+          <h2>Miss Golden Dreams</h2>
+          <dl class="work__meta">
+            <div><dt>Nach</dt><dd>Joyce Carol Oates</dd></div>
+            <div><dt>Regie</dt><dd>Anna Bergmann</dd></div>
+            <div><dt>Kostüm</dt><dd>Cedric Mpaka</dd></div>
+            <div><dt>Haus</dt><dd>Badisches Staatstheater Karlsruhe</dd></div>
+            <div><dt>Jahr</dt><dd>2023</dd></div>
+            <div><dt>Mitarbeit</dt><dd>Kostümassistenz</dd></div>
+          </dl>
+        </header>
+        <div class="work__media">
+          <button class="video" data-yt="2J6k1iPbMrk" aria-label="Video abspielen: Trailer Miss Golden Dreams">
+            <img width="1280" height="720" src="https://i.ytimg.com/vi/2J6k1iPbMrk/maxresdefault.jpg" alt="" loading="lazy" />
+            <span class="video__play">Trailer</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Mephisto -->
+      <article class="work" id="mephisto">
+        <header class="work__head">
+          <span class="work__no">06</span>
+          <h2>Mephisto</h2>
+          <dl class="work__meta">
+            <div><dt>Nach</dt><dd>Klaus Mann</dd></div>
+            <div><dt>Regie</dt><dd>Nils Strunk</dd></div>
+            <div><dt>Kostüm</dt><dd>Cedric Mpaka</dd></div>
+            <div><dt>Haus</dt><dd>Badisches Staatstheater Karlsruhe</dd></div>
+            <div><dt>Jahr</dt><dd>2023</dd></div>
+            <div><dt>Mitarbeit</dt><dd>Kostümassistenz</dd></div>
+          </dl>
+        </header>
+        <div class="work__media">
+          <button class="video" data-yt="-LTsEwIAfH4" data-start="12" aria-label="Video abspielen: Trailer Mephisto">
+            <img width="1280" height="720" src="https://i.ytimg.com/vi/-LTsEwIAfH4/maxresdefault.jpg" alt="" loading="lazy" />
+            <span class="video__play">Trailer</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- UNVAIN -->
+      <article class="work work--aside" id="unvain">
+        <header class="work__head">
+          <span class="work__no">Mode</span>
+          <h2>UNVAIN — <em>Skins</em></h2>
+          <dl class="work__meta">
+            <div><dt>Kollektion</dt><dd>Spring / Summer 2027</dd></div>
+            <div><dt>Label</dt><dd>UNVAIN, Robert Friedrichs</dd></div>
+            <div><dt>Ort</dt><dd>Berlin Fashion Week, ICC Berlin</dd></div>
+            <div><dt>Jahr</dt><dd>2026</dd></div>
+            <div><dt>Mitarbeit</dt><dd>Design-Praktikum</dd></div>
+          </dl>
+        </header>
+        <div class="work__media">
+          <button class="video" data-yt="kD_3SGqwljQ" aria-label="Video abspielen: UNVAIN Skins, Runway Show">
+            <img width="1280" height="720" src="https://i.ytimg.com/vi/kD_3SGqwljQ/maxresdefault.jpg" alt="" loading="lazy" />
+            <span class="video__play">Film</span>
+          </button>
+        </div>
+      </article>
+    </main>
+
+    <footer class="foot">
+      <a href="mailto:leolesego@web.de">leolesego@web.de</a>
+      <span>Berlin</span>
+    </footer>
+
+    <dialog class="lightbox" aria-label="Bildansicht">
+      <img alt="" />
+      <button class="lightbox__close" aria-label="Schließen">Schließen</button>
+    </dialog>
+  </body>
+</html>
