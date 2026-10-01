@@ -126,8 +126,10 @@ if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
         duration: 1000, delay: 150 + i * 90, easing: ease, fill: "backwards",
       });
     });
-    const { width, margin } = getComputedStyle(slot);
-    slot.animate([{ width: "0px", margin: "0px" }, { width, margin }], {
+    // Opens sideways in the one-line layout, downwards when stacked on mobile.
+    const side = matchMedia("(max-width: 800px)").matches ? "height" : "width";
+    const open = getComputedStyle(slot);
+    slot.animate([{ [side]: "0px", margin: "0px" }, { [side]: open[side], margin: open.margin }], {
       duration: 1100, delay: 1000, easing: ease, fill: "backwards",
     });
     hero.querySelector(".hero__foot").animate([{ opacity: 0 }, { opacity: 1 }], {

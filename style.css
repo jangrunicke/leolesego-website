@@ -371,7 +371,7 @@ summary .c-mark::after {
   text-align: center;
   white-space: nowrap;
   word-spacing: -0.12em;
-  font-size: min(15.4vw, 36svh);
+  font-size: min(13.6vw, 30svh);
 }
 
 .hero__name > span {
@@ -387,11 +387,13 @@ summary .c-mark::after {
   display: inline-block;
 }
 
+/* Taller than the letters, centred on them */
 .hero__slot {
   position: relative;
-  width: 0.58em;
-  height: 0.72em;
-  margin: 0 0.03em 0 0.07em;
+  width: 1em;
+  height: 1.3em;
+  margin: 0 0.06em 0 0.1em;
+  vertical-align: -0.29em;
 }
 
 .hero__reel {
@@ -468,6 +470,34 @@ summary .c-mark::after {
 
   .index__preview {
     display: none;
+  }
+
+  /* Stacked: LEO, photo, LESEGO */
+  .hero__name {
+    display: grid;
+    row-gap: 0.1em;
+    font-size: 23.5vw;
+  }
+
+  .hero__word:first-child {
+    justify-self: start;
+  }
+
+  .hero__word:last-child {
+    justify-self: end;
+  }
+
+  .hero__slot {
+    justify-self: center;
+    width: min(68vw, 44svh);
+    height: auto;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+  }
+
+  .is-intro .hero__slot {
+    width: min(68vw, 44svh);
+    height: 0;
   }
 
   .hero__foot {
