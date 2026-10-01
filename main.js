@@ -102,7 +102,8 @@ const ease = "cubic-bezier(0.625, 0.05, 0, 1)";
 let frame = 0;
 let heroVisible = true;
 
-// Hard cuts, like a gif. Paused while the hero is off screen.
+// Hard cuts, like a gif; slower on phones, where the photo fills most of the screen.
+// Paused while the hero is off screen.
 function startReel() {
   setInterval(() => {
     if (!heroVisible) return;
@@ -110,7 +111,7 @@ function startReel() {
     frame = (frame + 1) % frames.length;
     frames[frame].classList.add("is-active");
     caption.textContent = frames[frame].dataset.caption;
-  }, 1300);
+  }, matchMedia("(max-width: 800px)").matches ? 2400 : 1300);
 }
 new IntersectionObserver(([e]) => (heroVisible = e.isIntersecting)).observe(hero);
 

@@ -472,31 +472,32 @@ summary .c-mark::after {
     display: none;
   }
 
-  /* Stacked: LEO, photo, LESEGO */
+  /* Photo above, the name together on one line below it */
   .hero__name {
     display: grid;
-    row-gap: 0.1em;
-    font-size: 23.5vw;
-  }
-
-  .hero__word:first-child {
-    justify-self: start;
-  }
-
-  .hero__word:last-child {
-    justify-self: end;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: 0.22em;
+    row-gap: 0.18em;
+    font-size: 16vw;
   }
 
   .hero__slot {
+    grid-row: 1;
+    grid-column: 1 / -1;
     justify-self: center;
-    width: min(68vw, 44svh);
+    width: min(100%, 50svh);
     height: auto;
     aspect-ratio: 4 / 5;
     margin: 0;
   }
 
+  .hero__word {
+    grid-row: 2;
+  }
+
   .is-intro .hero__slot {
-    width: min(68vw, 44svh);
+    width: min(100%, 50svh);
     height: 0;
   }
 
