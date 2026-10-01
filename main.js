@@ -93,6 +93,7 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
 }
 
 // Hero: the name rises, then the photo reel opens and starts cycling.
+const phone = matchMedia("(max-width: 800px)").matches;
 const hero = document.querySelector(".hero");
 const root = document.documentElement;
 const frames = [...hero.querySelectorAll(".hero__reel img")];
@@ -101,7 +102,8 @@ const ease = "cubic-bezier(0.625, 0.05, 0, 1)";
 let frame = 0;
 let heroVisible = true;
 
-// Hard cuts, like a gif. Paused while the hero is off screen.
+// Hard cuts, like a gif; slower on phones, where the photo fills the screen.
+// Paused while the hero is off screen.
 function startReel() {
   setInterval(() => {
     if (!heroVisible) return;
@@ -109,7 +111,7 @@ function startReel() {
     frame = (frame + 1) % frames.length;
     frames[frame].classList.add("is-active");
     caption.textContent = frames[frame].dataset.caption;
-  }, 2400);
+  }, phone ? 2400 : 1300);
 }
 new IntersectionObserver(([e]) => (heroVisible = e.isIntersecting)).observe(hero);
 
@@ -125,13 +127,23 @@ if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
         duration: 1000, delay: 150 + i * 90, easing: ease, fill: "backwards",
       });
     });
-    hero.querySelector(".hero__reel").animate(
-      [{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0 0 0 0)" }],
-      { duration: 1200, delay: 600, easing: ease, fill: "backwards" }
-    );
+    if (phone) {
+      // Full-width photo below the name: reveal it upwards.
+      hero.querySelector(".hero__reel").animate(
+        [{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0 0 0 0)" }],
+        { duration: 1200, delay: 600, easing: ease, fill: "backwards" }
+      );
+    } else {
+      // Photo inside the name: open the gap between the words.
+      const slot = hero.querySelector(".hero__slot");
+      const { width, margin } = getComputedStyle(slot);
+      slot.animate([{ width: "0px", margin: "0px" }, { width, margin }], {
+        duration: 1100, delay: 1000, easing: ease, fill: "backwards",
+      });
+    }
     hero.querySelectorAll(".hero__sub, .hero__caption").forEach((el) => {
-      el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, delay: 1300, fill: "backwards" });
+      el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, delay: phone ? 1300 : 1600, fill: "backwards" });
     });
-    setTimeout(startReel, 1800);
+    setTimeout(startReel, phone ? 1800 : 2100);
   });
 }
