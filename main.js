@@ -92,18 +92,16 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
   })();
 }
 
-// Hero: the name rises, then a photo reel opens between the words.
+// Hero: the name rises, then the photo reel opens and starts cycling.
 const hero = document.querySelector(".hero");
 const root = document.documentElement;
-const slot = hero.querySelector(".hero__slot");
 const frames = [...hero.querySelectorAll(".hero__reel img")];
 const caption = hero.querySelector(".hero__caption");
 const ease = "cubic-bezier(0.625, 0.05, 0, 1)";
 let frame = 0;
 let heroVisible = true;
 
-// Hard cuts, like a gif; slower on phones, where the photo fills most of the screen.
-// Paused while the hero is off screen.
+// Hard cuts, like a gif. Paused while the hero is off screen.
 function startReel() {
   setInterval(() => {
     if (!heroVisible) return;
@@ -111,7 +109,7 @@ function startReel() {
     frame = (frame + 1) % frames.length;
     frames[frame].classList.add("is-active");
     caption.textContent = frames[frame].dataset.caption;
-  }, matchMedia("(max-width: 800px)").matches ? 2400 : 1300);
+  }, 2400);
 }
 new IntersectionObserver(([e]) => (heroVisible = e.isIntersecting)).observe(hero);
 
@@ -127,15 +125,13 @@ if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
         duration: 1000, delay: 150 + i * 90, easing: ease, fill: "backwards",
       });
     });
-    // Opens sideways in the one-line layout, downwards when stacked on mobile.
-    const side = matchMedia("(max-width: 800px)").matches ? "height" : "width";
-    const open = getComputedStyle(slot);
-    slot.animate([{ [side]: "0px", margin: "0px" }, { [side]: open[side], margin: open.margin }], {
-      duration: 1100, delay: 1000, easing: ease, fill: "backwards",
+    hero.querySelector(".hero__reel").animate(
+      [{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0 0 0 0)" }],
+      { duration: 1200, delay: 600, easing: ease, fill: "backwards" }
+    );
+    hero.querySelectorAll(".hero__sub, .hero__caption").forEach((el) => {
+      el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, delay: 1300, fill: "backwards" });
     });
-    hero.querySelector(".hero__foot").animate([{ opacity: 0 }, { opacity: 1 }], {
-      duration: 800, delay: 1600, fill: "backwards",
-    });
-    setTimeout(startReel, 2100);
+    setTimeout(startReel, 1800);
   });
 }

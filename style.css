@@ -51,6 +51,8 @@ h1 {
 
 .index__label,
 .bar,
+.hero__sub,
+.hero__caption,
 .row,
 .entry__close,
 .video__play,
@@ -82,6 +84,93 @@ h1 {
 
 .bar a:hover {
   opacity: 0.6;
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--pad);
+  height: 100svh;
+  min-height: 560px;
+  padding: 0 var(--pad) var(--pad);
+}
+
+.hero__text {
+  grid-column: 1 / 7;
+  grid-row: 1;
+  align-self: end;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 11vw, 10rem);
+}
+
+/* Clips each word below its line so it can rise into place */
+.hero__word {
+  display: inline-block;
+  clip-path: inset(-1em -1em 0 -1em);
+}
+
+.hero__word > span {
+  display: inline-block;
+}
+
+.hero__sub {
+  margin: 1.5rem 0 0 0.15rem;
+  color: var(--muted);
+}
+
+.hero__image {
+  grid-column: 7 / 13;
+  grid-row: 1;
+  margin: 0;
+  min-height: 0;
+  padding-top: calc(var(--pad) * 3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Photos stacked on top of each other, one visible at a time */
+.hero__reel {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.hero__reel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  visibility: hidden;
+}
+
+.hero__reel img.is-active {
+  visibility: visible;
+}
+
+.hero__caption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+/* Intro start state: words below their lines, photo closed */
+
+.is-intro .hero__word > span {
+  transform: translateY(110%);
+}
+
+.is-intro .hero__reel {
+  clip-path: inset(100% 0 0 0);
+}
+
+.is-intro .hero__sub,
+.is-intro .hero__caption {
+  opacity: 0;
 }
 
 /* Index */
@@ -356,98 +445,31 @@ summary .c-mark::after {
   cursor: pointer;
 }
 
-/* Hero: "LEO [photo] LESEGO" */
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  height: 100svh;
-  min-height: 480px;
-  padding: var(--bar) var(--pad) var(--pad);
-}
-
-.hero__name {
-  margin: auto 0;
-  text-align: center;
-  white-space: nowrap;
-  word-spacing: -0.12em;
-  font-size: min(13.6vw, 30svh);
-}
-
-.hero__name > span {
-  display: inline-block;
-}
-
-/* Clips the words below their baseline so they can rise into place */
-.hero__word {
-  clip-path: inset(-1em -1em 0 -1em);
-}
-
-.hero__word > span {
-  display: inline-block;
-}
-
-/* Taller than the letters, centred on them */
-.hero__slot {
-  position: relative;
-  width: 1em;
-  height: 1.3em;
-  margin: 0 0.06em 0 0.1em;
-  vertical-align: -0.29em;
-}
-
-.hero__reel {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: #111;
-}
-
-.hero__reel img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  visibility: hidden;
-}
-
-.hero__reel img.is-active {
-  visibility: visible;
-}
-
-.hero__foot {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--pad);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.hero__foot p {
-  margin: 0;
-}
-
-/* Intro start state: words below the line, photo closed */
-
-.is-intro .hero__word > span {
-  transform: translateY(110%);
-}
-
-.is-intro .hero__slot {
-  width: 0;
-  margin: 0;
-}
-
-.is-intro .hero__foot {
-  opacity: 0;
-}
-
 /* Small screens */
 
 @media (max-width: 800px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-top: 4.5rem;
+  }
+
+  .hero__image {
+    padding-top: 0;
+    order: 2;
+  }
+
+  .hero__reel {
+    flex: none;
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero__text {
+    align-self: auto;
+    padding: 0 0 2rem;
+  }
+
   .index {
     padding-top: 12vh;
   }
@@ -472,39 +494,6 @@ summary .c-mark::after {
     display: none;
   }
 
-  /* Photo above, the name together on one line below it */
-  .hero__name {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    column-gap: 0.22em;
-    row-gap: 0.18em;
-    font-size: 16vw;
-  }
-
-  .hero__slot {
-    grid-row: 1;
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: min(100%, 50svh);
-    height: auto;
-    aspect-ratio: 4 / 5;
-    margin: 0;
-  }
-
-  .hero__word {
-    grid-row: 2;
-  }
-
-  .is-intro .hero__slot {
-    width: min(100%, 50svh);
-    height: 0;
-  }
-
-  .hero__foot {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
 
   .video {
     grid-column: 1 / 13;
