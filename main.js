@@ -44,17 +44,41 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") show(index - 1);
 });
 
-// Index: a small image follows the cursor over each entry.
+// Index: each work opens in place, one at a time.
+const entries = [...document.querySelectorAll(".entry")];
+const barHeight = () => document.querySelector(".bar").offsetHeight;
+
+entries.forEach((entry) => {
+  entry.addEventListener("toggle", () => {
+    if (entry.open) {
+      entries.forEach((other) => other !== entry && (other.open = false));
+      entry.scrollIntoView({ block: "start" });
+    } else if (entry.getBoundingClientRect().top < barHeight()) {
+      entry.scrollIntoView({ block: "center" });
+    }
+  });
+  entry.querySelector(".entry__close").addEventListener("click", () => (entry.open = false));
+});
+
+function openFromHash() {
+  const target = document.getElementById(location.hash.slice(1));
+  if (target && target.matches(".entry")) target.open = true;
+}
+openFromHash();
+addEventListener("hashchange", openFromHash);
+
+// Index: a small image follows the cursor over each closed entry.
 const preview = document.querySelector(".index__preview");
 if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
   let x = 0, y = 0, px = 0, py = 0;
-  document.querySelectorAll(".index__list a").forEach((link) => {
-    link.addEventListener("mouseenter", () => {
-      if (!link.dataset.preview) return;
-      preview.src = link.dataset.preview;
+  document.querySelectorAll(".row[data-preview]").forEach((row) => {
+    row.addEventListener("mouseenter", () => {
+      if (row.closest("[open]")) return;
+      preview.src = row.dataset.preview;
       preview.classList.add("is-visible");
     });
-    link.addEventListener("mouseleave", () => preview.classList.remove("is-visible"));
+    row.addEventListener("mouseleave", () => preview.classList.remove("is-visible"));
+    row.addEventListener("click", () => preview.classList.remove("is-visible"));
   });
   document.addEventListener("mousemove", (e) => {
     x = e.clientX;
@@ -67,4 +91,3 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
     requestAnimationFrame(follow);
   })();
 }
-
