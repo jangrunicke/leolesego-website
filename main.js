@@ -91,3 +91,48 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
     requestAnimationFrame(follow);
   })();
 }
+
+// Hero: the name rises, then a photo reel opens between the words.
+const hero = document.querySelector(".hero");
+const root = document.documentElement;
+const slot = hero.querySelector(".hero__slot");
+const frames = [...hero.querySelectorAll(".hero__reel img")];
+const caption = hero.querySelector(".hero__caption");
+const ease = "cubic-bezier(0.625, 0.05, 0, 1)";
+let frame = 0;
+let heroVisible = true;
+
+// Hard cuts, like a gif. Paused while the hero is off screen.
+function startReel() {
+  setInterval(() => {
+    if (!heroVisible) return;
+    frames[frame].classList.remove("is-active");
+    frame = (frame + 1) % frames.length;
+    frames[frame].classList.add("is-active");
+    caption.textContent = frames[frame].dataset.caption;
+  }, 1300);
+}
+new IntersectionObserver(([e]) => (heroVisible = e.isIntersecting)).observe(hero);
+
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  // Still: first photo only.
+} else if (!root.classList.contains("is-intro")) {
+  startReel();
+} else {
+  Promise.all([document.fonts.ready, frames[0].decode().catch(() => {})]).then(() => {
+    root.classList.remove("is-intro");
+    hero.querySelectorAll(".hero__word > span").forEach((word, i) => {
+      word.animate([{ transform: "translateY(110%)" }, { transform: "none" }], {
+        duration: 1000, delay: 150 + i * 90, easing: ease, fill: "backwards",
+      });
+    });
+    const { width, margin } = getComputedStyle(slot);
+    slot.animate([{ width: "0px", margin: "0px" }, { width, margin }], {
+      duration: 1100, delay: 1000, easing: ease, fill: "backwards",
+    });
+    hero.querySelector(".hero__foot").animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: 800, delay: 1600, fill: "backwards",
+    });
+    setTimeout(startReel, 2100);
+  });
+}

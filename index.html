@@ -14,6 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      // Hold the hero in its start state until main.js plays the intro.
+      if (!location.hash && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("is-intro");
+      }
+    </script>
     <script src="main.js" defer></script>
   </head>
   <body>
@@ -26,21 +32,26 @@
     </header>
 
     <main id="top">
-      <section class="hero">
-        <figure class="hero__image">
-          <img
-            width="1333"
-            height="2000"
-            src="img/emmett/04.jpg"
-            srcset="img/emmett/04-s.jpg 666w, img/emmett/04.jpg 1333w"
-            sizes="(min-width: 800px) 44vw, 100vw"
-            alt="Eine Figur in einem ausladenden roten Organza-Kleid auf einer dunklen Bühne"
-          />
-          <figcaption>Dreaming Emmett, 2025</figcaption>
-        </figure>
-        <div class="hero__text">
-          <h1>Leo<br />Lesego</h1>
-          <p class="hero__sub">Kostüm &amp; Mode</p>
+      <section class="hero" aria-label="Leo Lesego, Kostüm &amp; Mode">
+        <h1 class="hero__name">
+          <span class="hero__word"><span>Leo</span></span>
+          <span class="hero__slot" aria-hidden="true">
+            <span class="hero__reel">
+              <img src="img/emmett/04-s.jpg" class="is-active" alt="" data-caption="Dreaming Emmett, 2025" />
+              <img src="img/mephisto/06-s.jpg" alt="" data-caption="Mephisto, 2023" />
+              <img src="img/biedermann/05-s.jpg" alt="" data-caption="Biedermann und die Brandstifter, 2025" />
+              <img src="img/emmett/06-s.jpg" alt="" data-caption="Dreaming Emmett, 2025" />
+              <img src="img/mephisto/03-s.jpg" alt="" data-caption="Mephisto, 2023" />
+              <img src="img/biedermann/01-s.jpg" alt="" data-caption="Biedermann und die Brandstifter, 2025" />
+              <img src="img/emmett/09-s.jpg" alt="" data-caption="Dreaming Emmett, 2025" />
+              <img src="img/mephisto/08-s.jpg" alt="" data-caption="Mephisto, 2023" />
+            </span>
+          </span>
+          <span class="hero__word"><span>Lesego</span></span>
+        </h1>
+        <div class="hero__foot">
+          <p>Kostüm &amp; Mode</p>
+          <p class="hero__caption">Dreaming Emmett, 2025</p>
         </div>
       </section>
 
@@ -245,5 +256,6 @@
       <img alt="" />
       <button class="lightbox__close" aria-label="Schließen">Schließen</button>
     </dialog>
+
   </body>
 </html>
